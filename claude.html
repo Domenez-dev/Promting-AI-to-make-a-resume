@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouzara Zakaria - Web Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --text: #1f2937;
+            --bg: #ffffff;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .profile-info {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .profile-info a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .profile-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-title {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.25rem;
+        }
+
+        .experience-company {
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Education & Certifications */
+        .education-item, .certification-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .certification-item:hover {
+            transform: translateX(5px);
+        }
+
+        /* Contact */
+        .contact-info {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 4rem 0;
+            }
+
+            .profile-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="container header-content">
+            <h1 data-aos="fade-down">Bouzara Zakaria</h1>
+            <h2 data-aos="fade-up">Full Stack Web Developer</h2>
+            <div class="profile-info" data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/domenez-dev" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/bouzara-zakaria" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about" data-aos="fade-up">
+            <h2 class="section-title">About Me</h2>
+            <p>Web Developer with 3 years of full-stack experience in Django and React. Proficient in Python, JavaScript, and C++, with skills in web scraping, automation, configuration, SQL databases, and AWS. Recognized for problem-solving abilities and effective teamwork, with a proven track record in developing efficient solutions.</p>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title" data-aos="fade-up">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>JavaScript</li>
+                        <li>HTML/CSS</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Flask</li>
+                        <li>SQL Databases</li>
+                    </ul>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Tools & Technologies</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Wikayanet</h3>
+                    <p>A web platform delivering real-time security updates and news, enhancing accessibility for tech enthusiasts.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">HTML</span>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Content Aggregator Bot</h3>
+                    <p>A bot that utilizes web scraping to gather and organize articles from various websites.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                        <span class="tech-tag">Requests</span>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Real-Time Encrypted Messaging App</h3>
+                    <p>A secure messaging app with end-to-end encryption. (In Development)</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">WebSocket</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title" data-aos="fade-up">Experience</h2>
+            <div class="experience-item" data-aos="fade-left">
+                <div class="experience-title">Intern Web Developer & Web Security Engineer</div>
+                <div class="experience-company">CERIST (Research Center)</div>
+                <div class="experience-date">December 2023 – June 2024</div>
+                <ul>
+                    <li>Assisted in developing and securing web applications</li>
+                    <li>Implemented security protocols and optimized web interfaces</li>
+                    <li>Collaborated with senior engineers on backend systems</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title" data-aos="fade-up">Education</h2>
+            <div class="education-item" data-aos="fade-left">
+                <h3>Master's Degree in Network and Distributed Systems</h3>
+                <p>University of USTHB (Expected 2026)</p>
+            </div>
+            <div class="education-item" data-aos="fade-left" data-aos-delay="100">
+                <h3>Bachelor's Degree in Computer Science</h3>
+                <p>University of USTHB - 2024</p>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+            <div class="certification-item" data-aos="fade-left">
+                <h3>ICT-Towers Certification</h3>
+                <p>Basic Security</p>
+                <p>September 2022</p>
+            </div>
+            <div class="certification-item" data-aos="fade-left" data-aos-delay="100">
+                <h3>DisHack Certification</h3>
+                <p>Project Management Hackathon</p>
+                <p>November 2023</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title" data-aos="fade-up">Contact</h2>
+            <div class="contact-info" data-aos="fade-up">
+                <p>Bab Ezzouar, Algiers, Algeria</p>
+                <p>Phone: 0555555555</p>
+                <div class="social-links">
+                    <a href="https://github.com/domenez-dev" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/bouzara-zakaria" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/bouzara-zakaria" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-in-out',
+        });
+
+        // Add scroll reveal animation to section titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(20px)';
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        title.style.opacity = '1';
+                        title.style.transform = 'translateY(0)';
+                        title.style.transition = 'all 0.6s ease-out';
+                    }
+                });
+            });
+
+            observer.observe(title);
+        });
+
+        // Add hover animation to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
